@@ -17,7 +17,7 @@ Ensure you have the following installed:
 
 1. **Set up MySQL database:**
 
-   - Create a database named `gym_db`.
+   - Create your database.
    - Configure MySQL user credentials (`user`, `password`, `host`) in `app.py`.
 
 2. **Run the application:**
