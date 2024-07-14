@@ -1,3 +1,102 @@
+
+''' I leave out with app.app_context():
+    db.create_all() because my flask does not work with it i get error  
+    and I KNOW its not my password or the flask configuration
+    
+    
+    
+    Traceback (most recent call last):
+  File "/home/smittydeuce/temple/assignments/api_rest/intro_to_ORM/myenv/bin/flask", line 8, in <module>
+    sys.exit(main())
+  File "/home/smittydeuce/temple/assignments/api_rest/intro_to_ORM/myenv/lib/python3.10/site-packages/flask/cli.py", line 1105, in main
+    cli.main()
+  File "/home/smittydeuce/temple/assignments/api_rest/intro_to_ORM/myenv/lib/python3.10/site-packages/click/core.py", line 1078, in main
+    rv = self.invoke(ctx)
+  File "/home/smittydeuce/temple/assignments/api_rest/intro_to_ORM/myenv/lib/python3.10/site-packages/click/core.py", line 1688, in invoke
+    return _process_result(sub_ctx.command.invoke(sub_ctx))
+  File "/home/smittydeuce/temple/assignments/api_rest/intro_to_ORM/myenv/lib/python3.10/site-packages/click/core.py", line 1434, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+  File "/home/smittydeuce/temple/assignments/api_rest/intro_to_ORM/myenv/lib/python3.10/site-packages/click/core.py", line 783, in invoke
+    return __callback(*args, **kwargs)
+  File "/home/smittydeuce/temple/assignments/api_rest/intro_to_ORM/myenv/lib/python3.10/site-packages/click/decorators.py", line 92, in new_func
+    return ctx.invoke(f, obj, *args, **kwargs)
+  File "/home/smittydeuce/temple/assignments/api_rest/intro_to_ORM/myenv/lib/python3.10/site-packages/click/core.py", line 783, in invoke
+    return __callback(*args, **kwargs)
+  File "/home/smittydeuce/temple/assignments/api_rest/intro_to_ORM/myenv/lib/python3.10/site-packages/flask/cli.py", line 953, in run_command
+    raise e from None
+  File "/home/smittydeuce/temple/assignments/api_rest/intro_to_ORM/myenv/lib/python3.10/site-packages/flask/cli.py", line 937, in run_command
+    app: WSGIApplication = info.load_app()
+  File "/home/smittydeuce/temple/assignments/api_rest/intro_to_ORM/myenv/lib/python3.10/site-packages/flask/cli.py", line 339, in load_app
+    app = locate_app(import_name, None, raise_if_not_found=False)
+  File "/home/smittydeuce/temple/assignments/api_rest/intro_to_ORM/myenv/lib/python3.10/site-packages/flask/cli.py", line 245, in locate_app
+    __import__(module_name)
+  File "/home/smittydeuce/temple/assignments/api_rest/intro_to_ORM/app.py", line 253, in <module>
+    db.create_all()
+  File "/home/smittydeuce/temple/assignments/api_rest/intro_to_ORM/myenv/lib/python3.10/site-packages/flask_sqlalchemy/extension.py", line 900, in create_all
+    self._call_for_binds(bind_key, "create_all")
+  File "/home/smittydeuce/temple/assignments/api_rest/intro_to_ORM/myenv/lib/python3.10/site-packages/flask_sqlalchemy/extension.py", line 881, in _call_for_binds
+    getattr(metadata, op_name)(bind=engine)
+  File "/home/smittydeuce/temple/assignments/api_rest/intro_to_ORM/myenv/lib/python3.10/site-packages/sqlalchemy/sql/schema.py", line 5871, in create_all
+    bind._run_ddl_visitor(
+  File "/home/smittydeuce/temple/assignments/api_rest/intro_to_ORM/myenv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3250, in _run_ddl_visitor
+    with self.begin() as conn:
+  File "/usr/lib/python3.10/contextlib.py", line 135, in __enter__
+    return next(self.gen)
+  File "/home/smittydeuce/temple/assignments/api_rest/intro_to_ORM/myenv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3240, in begin
+    with self.connect() as conn:
+  File "/home/smittydeuce/temple/assignments/api_rest/intro_to_ORM/myenv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3276, in connect
+    return self._connection_cls(self)
+  File "/home/smittydeuce/temple/assignments/api_rest/intro_to_ORM/myenv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 148, in __init__
+    Connection._handle_dbapi_exception_noconnection(
+  File "/home/smittydeuce/temple/assignments/api_rest/intro_to_ORM/myenv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2440, in _handle_dbapi_exception_noconnection
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/home/smittydeuce/temple/assignments/api_rest/intro_to_ORM/myenv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 146, in __init__
+    self._dbapi_connection = engine.raw_connection()
+  File "/home/smittydeuce/temple/assignments/api_rest/intro_to_ORM/myenv/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 3300, in raw_connection
+    return self.pool.connect()
+  File "/home/smittydeuce/temple/assignments/api_rest/intro_to_ORM/myenv/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+  File "/home/smittydeuce/temple/assignments/api_rest/intro_to_ORM/myenv/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 1263, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+  File "/home/smittydeuce/temple/assignments/api_rest/intro_to_ORM/myenv/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+    rec = pool._do_get()
+  File "/home/smittydeuce/temple/assignments/api_rest/intro_to_ORM/myenv/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 179, in _do_get
+    with util.safe_reraise():
+  File "/home/smittydeuce/temple/assignments/api_rest/intro_to_ORM/myenv/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/smittydeuce/temple/assignments/api_rest/intro_to_ORM/myenv/lib/python3.10/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    return self._create_connection()
+  File "/home/smittydeuce/temple/assignments/api_rest/intro_to_ORM/myenv/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+  File "/home/smittydeuce/temple/assignments/api_rest/intro_to_ORM/myenv/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+    self.__connect()
+  File "/home/smittydeuce/temple/assignments/api_rest/intro_to_ORM/myenv/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+    with util.safe_reraise():
+  File "/home/smittydeuce/temple/assignments/api_rest/intro_to_ORM/myenv/lib/python3.10/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/home/smittydeuce/temple/assignments/api_rest/intro_to_ORM/myenv/lib/python3.10/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+  File "/home/smittydeuce/temple/assignments/api_rest/intro_to_ORM/myenv/lib/python3.10/site-packages/sqlalchemy/engine/create.py", line 643, in connect
+    return dialect.connect(*cargs, **cparams)
+  File "/home/smittydeuce/temple/assignments/api_rest/intro_to_ORM/myenv/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 620, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+  File "/home/smittydeuce/temple/assignments/api_rest/intro_to_ORM/myenv/lib/python3.10/site-packages/mysql/connector/pooling.py", line 322, in connect
+    return CMySQLConnection(*args, **kwargs)
+  File "/home/smittydeuce/temple/assignments/api_rest/intro_to_ORM/myenv/lib/python3.10/site-packages/mysql/connector/connection_cext.py", line 151, in __init__
+    self.connect(**kwargs)
+  File "/home/smittydeuce/temple/assignments/api_rest/intro_to_ORM/myenv/lib/python3.10/site-packages/mysql/connector/abstracts.py", line 1399, in connect
+    self._open_connection()
+  File "/home/smittydeuce/temple/assignments/api_rest/intro_to_ORM/myenv/lib/python3.10/site-packages/mysql/connector/connection_cext.py", line 339, in _open_connection
+    raise get_mysql_exception(
+sqlalchemy.exc.ProgrammingError: (mysql.connector.errors.ProgrammingError) 1045 (28000): Access denied for user 'USER'@'localhost' (using password: YES)
+(Background on this error at: https://sqlalche.me/e/20/f405)
+ '''
+
+
+
+
+
+
 from flask import Flask, jsonify, request, abort
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
@@ -70,7 +169,6 @@ def get_members():
 def add_member():
     try:
         member_data = member_schema.load(request.json)
-
     except ValidationError as err:
         return jsonify(err.messages), 400
 
@@ -92,7 +190,6 @@ def update_member(id):
 
     try:
         member_data = member_schema.load(request.json)
-
     except ValidationError as err:
         return jsonify(err.messages), 400
 
@@ -134,7 +231,6 @@ workout_sessions_schema = WorkoutSessionSchema(many=True)
 def schedule_workout_session():
     try:
         session_data = workout_session_schema.load(request.json)
-
     except ValidationError as err:
         return jsonify(err.messages), 400
 
@@ -164,7 +260,6 @@ def update_workout_session(id):
 
     try:
         session_data = workout_session_schema.load(request.json)
-
     except ValidationError as err:
         return jsonify(err.messages), 400
 
@@ -184,6 +279,67 @@ def get_member_workout_sessions(member_id):
     if not sessions:
         abort(404, description=f"No workout sessions found for member with id {member_id}")
     return workout_sessions_schema.jsonify(sessions)
+
+# Define Marshmallow schema for Trainer
+class TrainerSchema(ma.Schema):
+    name = fields.String(required=True)
+
+    class Meta:
+        fields = ("id", "name")
+
+# Instantiate schemas for single trainer and multiple trainers
+trainer_schema = TrainerSchema()
+trainers_schema = TrainerSchema(many=True)
+
+# Route to add a new trainer
+@app.route("/trainers", methods=["POST"])
+def add_trainer():
+    try:
+        trainer_data = trainer_schema.load(request.json)
+    except ValidationError as err:
+        return jsonify(err.messages), 400
+
+    new_trainer = Trainer(name=trainer_data["name"])
+    db.session.add(new_trainer)
+    db.session.commit()
+    return jsonify({"message": "New trainer added successfully"}), 201
+
+# Route to get all trainers
+@app.route("/trainers", methods=["GET"])
+def get_trainers():
+    trainers = Trainer.query.all()
+    return trainers_schema.jsonify(trainers)
+
+# Route to update a trainer
+@app.route("/trainers/<int:id>", methods=["PUT"])
+def update_trainer(id):
+    trainer = Trainer.query.get(id)
+    if not trainer:
+        abort(404, description=f"Trainer with id {id} not found")
+
+    try:
+        trainer_data = trainer_schema.load(request.json)
+    except ValidationError as err:
+        return jsonify(err.messages), 400
+
+    trainer.name = trainer_data["name"]
+    db.session.commit()
+    return jsonify({"message": "Trainer details updated successfully"})
+
+# Route to delete a trainer
+@app.route("/trainers/<int:id>", methods=["DELETE"])
+def delete_trainer(id):
+    trainer = Trainer.query.get(id)
+    if not trainer:
+        abort(404, description=f"Trainer with id {id} not found")
+
+    db.session.delete(trainer)
+    db.session.commit()
+    return jsonify({"message": f"Trainer with id {id} deleted successfully"}), 200
+
+# Create the database tables
+with app.app_context():
+    db.create_all()
 
 # Run the application if this file is executed directly
 if __name__ == "__main__":
